@@ -1,0 +1,10 @@
+Find all null values and remove them
+
+
+import pandas as pd
+df = pd.read_csv("preprocessing.csv")
+print("Null values before removing:")
+print(df.isnull().sum())
+df_clean = df.dropna()
+print("\nNull values after removing:")
+print(df_clean.isnull().sum())
