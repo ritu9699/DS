@@ -1,0 +1,21 @@
+WAPP distribution of wine quality, calculates skewness and kurtosis, and applies a log transformation to the alcohol column. 
+
+from scipy.stats import skew, kurtosis
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+import numpy as np
+df=pd.read_csv('winequality_red.csv')
+df.head(2)
+sns.countplot(x='quality'
+, data=df, palette='viridis')
+plt.title("Distribution of Wine Quality")
+plt.xlabel("Wine Quality")
+plt.ylabel("Count")
+plt.show()
+a_s=skew(df['alcohol'])
+a_k=kurtosis(df['alcohol'])
+print(a_k)
+print(a_s)
+df['log_a']=np.log(df['alcohol'])
+df
