@@ -1,0 +1,27 @@
+Write a Python program to build an SVM model to Cancer dataset.
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score, precision_score
+from sklearn.metrics import recall_score, classification_report
+dataset=pd.read_csv('breast_cancer_dataset.csv')
+X = dataset.iloc[:, :-2].values
+y = dataset.iloc[:, 30].values
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,random_state=42)
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+classifier = SVC(kernel='linear', random_state=42)
+classifier.fit(X_train, y_train)
+y_pred = classifier.predict(X_test)
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+print("\n Model Evaluation on Test Data:")
+print(f"Accuracy : {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall : {recall:.4f}")
+print("\n Classification Report:")
+print(classification_report(y_test, y_pred))
