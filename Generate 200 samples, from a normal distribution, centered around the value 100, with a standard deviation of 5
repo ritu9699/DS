@@ -1,0 +1,14 @@
+Write a program in python to print the number of outliers. Generate 200 samples, from a normal distribution, centered around the value 100, with a standard deviation of 5
+
+import numpy as np
+data = np.random.normal(100, 5, 200)
+threshold = 2
+mean = np.mean(data)
+std_dev = np.std(data)
+z_scores = (data - mean) / std_dev
+outliers = np.where(np.abs(z_scores) >
+threshold)[0]
+print("Number of outliers:"
+, len(outliers))
+print("Outlier indices:"
+, outliers)
