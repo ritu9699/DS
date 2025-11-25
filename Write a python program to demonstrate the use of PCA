@@ -1,0 +1,21 @@
+Write a python program to demonstrate the use of PCA
+
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+df = pd.read_csv("iris.csv")
+X = df.iloc[:, :-1]
+y = df['target']
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+pca = PCA(n_components=2)
+X_pca = pca.fit_transform(X_scaled)
+plt.figure(figsize=(8, 6))
+plt.scatter(X_pca[:, 0], X_pca[:, 1], c=y, cmap='viridis',edgecolor='k', s=150)
+plt.title('PCA on Iris Dataset (Using CSV File)')
+plt.xlabel('Principal Component 1')
+plt.ylabel('Principal Component 2')
+plt.colorbar(label='Target Class')
+plt.show()
