@@ -1,0 +1,21 @@
+Write a python program to implement LDA use any synthetic dataset.
+
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import StandardScaler
+from sklearn.discriminant_analysis import
+LinearDiscriminantAnalysis as LDA
+df = pd.read_csv("iris.csv")
+X = df.iloc[:, :-1]
+y = df['target']
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+lda = LDA(n_components=2)
+X_lda = lda.fit_transform(X_scaled, y)
+plt.figure(figsize=(8, 6))
+plt.scatter(X_lda[:, 0], X_lda[:, 1], c=y, cmap='viridis', edgecolor='k',s=150)
+plt.title('LDA on Iris Dataset (Using CSV File)')
+plt.xlabel('Linear Discriminant 1')
+plt.ylabel('Linear Discriminant 2')
+plt.colorbar(label='Target Class')
+plt.show()
