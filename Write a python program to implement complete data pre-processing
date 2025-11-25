@@ -1,0 +1,29 @@
+Write a python program to implement complete data pre-processing
+
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder, MinMaxScaler
+from sklearn.model_selection import train_test_split
+df = pd.read_csv("preprocessing.csv")
+df['Age'].fillna(df['Age'].mean(), inplace=True)
+df['Salary'].fillna(df['Salary'].mean(), inplace=True)
+le = LabelEncoder()
+df['Category'] = le.fit
+
+transform(df['Category'])
+scaler = MinMaxScaler()
+df[['Age', 'Salary']] = scaler.fit
+
+transform(df[['Age', 'Salary']])
+X = df.drop("Target", axis=1)
+y = df["Target"]
+X_train, X_test, y_
+train, y_
+test = train_test_split(X, y, test_size=0.2, random_state=42)
+print("X_train:", X_train.shape)
+print("X_test:", X_test.shape)
+print("y_
+train:", y_
+train.shape)
+print("y_
+test:", y_
+test.shape)
