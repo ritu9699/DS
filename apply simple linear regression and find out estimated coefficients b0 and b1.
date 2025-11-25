@@ -1,0 +1,19 @@
+Consider following observations/data. And apply simple linear regression and find out estimated coefficients b0 and b1.( use numpy package)
+x= [0, 1, 2, 3, 4, 5, 6, 7, 8, 9,11,13]
+y = ([1, 3, 2, 5, 7, 8, 8, 9, 10, 12,16, 18]
+
+
+import numpy as np
+x = np.array([0, 1, 2, 3, 4])
+y = np.array([2, 3, 5, 4, 6])
+n = len(x)
+mean_x = np.mean(x)
+mean_y = np.mean(y)
+SS_xy = np.sum(x * y) - n * mean_x * mean_y
+SS_xx = np.sum(x * x) - n * mean_x * mean_x
+b1 = SS_xy / SS_xx
+b0 = mean_y - b1 * mean_x
+print("Estimated coefficient b1 (slope):"
+,b1)
+print("Estimated coefficient b0 (y-intercept):"
+,b0)
