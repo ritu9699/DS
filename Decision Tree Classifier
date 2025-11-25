@@ -1,0 +1,17 @@
+WAPP build Decision Tree Classifier for shows.csv from pandas and predict class label for show starring a 40 years old American comedian, with 10 years of experience, and a comedy ranking of 7?
+
+
+import pandas
+from sklearn.tree import DecisionTreeClassifier
+from sklearn import tree
+dataset = pandas.read_csv("Actors.csv")
+d = {'UK': 0,'USA': 1,'N': 2}
+dataset['Nationality'] = dataset['Nationality'].map(d)
+d = {'YES': 1,'NO': 0}
+dataset['Go'] = dataset['Go'].map(d)
+x = dataset.iloc[:, :-1].values
+y = dataset.iloc[:, 4].values
+dtree = DecisionTreeClassifier()
+dtree = dtree.fit(x, y)
+tree.plot_tree(dtree,feature_names=x)
+print(dtree.predict([[40, 10, 7, 1]]))
