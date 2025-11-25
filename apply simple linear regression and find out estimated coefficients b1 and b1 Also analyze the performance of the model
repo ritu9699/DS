@@ -1,0 +1,14 @@
+Consider following observations/data. And apply simple linear regression and find out estimated coefficients b1 and b1 Also analyze the performance of the model
+x = np.array([1,2,3,4,5,6,7,8])
+y = np.array([7,14,15,18,19,21,26,23])
+
+import numpy as np
+from sklearn import linear_model
+X = np.array([0, 1, 2, 3, 4]).reshape((-1,1))
+y = np.array([2, 3, 5, 4, 6])
+model = linear_model.LinearRegression()
+model.fit(X, y)
+b0 = model.intercept_
+b1 = model.coef_[0]
+print("b0 = ",b0)
+print("b1 = ",b1)
