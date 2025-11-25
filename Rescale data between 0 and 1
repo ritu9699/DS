@@ -1,0 +1,11 @@
+Rescale data between 0 and 1 (use inbuilt dataset)
+
+from sklearn.datasets import load_iris
+from sklearn.preprocessing import MinMaxScaler
+import pandas as pd
+data = load_iris()
+X = data.data
+scaler = MinMaxScaler()
+X_scaled = scaler.fit_transform(X)
+scaled_df = pd.DataFrame(X_scaled, columns=data.feature_names)
+print(scaled_df.head())
